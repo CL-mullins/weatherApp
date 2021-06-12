@@ -3,9 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Moody Weather App</title>
 </head>
 <body>
-    {{ data.country_code}}
+    <form method="POST">
+        <h1>Hello! Welcome to Moody! How are you doing?</h1>
+        {% if data.country_code %}
+        <h2>Country Code: {{ data.country_code }}</h1>
+        {% endif %}
+        <p>The weather today in {{ data.cityname }} is {{ data.temp }} <br>
+            How are you feeling today?
+        </p>
+        
+
+    </form>
+
+    
 </body>
 </html>
