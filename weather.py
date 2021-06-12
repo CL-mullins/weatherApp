@@ -16,7 +16,7 @@ def weather():
         city = request.form['city']
     else:
         # for default city oakland
-        city = 'oakland'
+        city = 'Oakland'
 
     api = '9a2693e4405c473fec33321dffd376cf'
 
