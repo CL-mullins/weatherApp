@@ -16,8 +16,7 @@ def weather():
 
     api = '9a2693e4405c473fec33321dffd376cf'
 
-    source = urllib.request.urlopen('http://api.openweathermap.org/data/2.5/weather?q =' + city + '&appid =' + api).read()
-
+    source = urllib.request.urlopen('http://api.openweathermap.org/data/2.5/weather?q=' + city + '&appid=' + api).read()
     # convert JSON data
     list_of_data = json.loads(source)
 
