@@ -7,10 +7,12 @@
 </head>
 <body>
     <form method="POST">
+        <!--Header-->
         <h1>Hello! Welcome to Moody! How are you doing?</h1>
         {% if data.country_code %}
         <h2>Country Code: {{ data.country_code }}</h1>
         {% endif %}
+        <!---Mood tracker-->
         <p>The weather today in {{ data.cityname }} is {{ data.temp }} <br>
             How are you feeling today?<br>
             <input type="text" label="mood">
