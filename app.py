@@ -1,11 +1,20 @@
 from flask import Flask, render_template, request
 from flask_sqlalchemy import SQLAlchemy
+from config import Config
+import os
+from forms import MoodForm
+from models import Mood
 
 import json
 
 import urllib.request
 
 app = Flask(__name__)
+app.config.from_object(Config)
+app.secret_key = os.urandom(24)
+
+#database
+db = SQLAlchemy(app)
 
 ##########################################
 #               Routes                  #
@@ -13,6 +22,7 @@ app = Flask(__name__)
 
 @app.route('/', methods =['POST','GET'])
 def weather():
+    form = MoodForm()
     if request.method == 'POST':
         city = request.form['city']
     else:
@@ -36,6 +46,13 @@ def weather():
         "cityname":str(city),
     }
     print(data)
+
+    if form.validate_on_submit():
+        new_mood = Mood(
+            mood = form.mood.data
+        )
+        db.session.add(new_exercise)
+        db.session.commit()
 
     # Allow anonymous users to input their mood
     # Corresponding to the weather
